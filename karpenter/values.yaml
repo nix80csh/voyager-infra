@@ -3,8 +3,8 @@ clusterName: voyager-cluster
 settings:
   aws:
     defaultInstanceProfile: karpenter-node-instance-profile
-    clusterEndpoint: https://<EKS-ENDPOINT>
-    
+    clusterEndpoint: https://0A70DAC60A645C539982DB2CFAE16624.gr7.ap-northeast-2.eks.amazonaws.com
+
 replicas: 1
 image:
   repository: public.ecr.aws/karpenter/controller
