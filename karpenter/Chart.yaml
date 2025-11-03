@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 name: voyager-q2
 type: application
 version: 0.1.0
