@@ -1,6 +1,8 @@
+
 apiVersion: v2
+version: 0.16.3
 kind: Chart
 name: voyager-q2
 type: application
-version: 0.1.0
-appVersion: "v0.16.3"
+
+appVersion: v1.0.0
