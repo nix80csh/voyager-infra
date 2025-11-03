@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "public.ecr.aws/karpenter/controller:v0.33.0"
           ports:
             - containerPort: 5000
           env:
