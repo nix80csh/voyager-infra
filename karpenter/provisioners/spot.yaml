@@ -1,21 +1,21 @@
-# apiVersion: karpenter.sh/v1
-# kind: Provisioner
-# metadata:
-#   name: spot
-# spec:
-#   requirements:
-#     - key: "karpenter.sh/capacity-type"
-#       operator: In
-#       values: ["spot"]
-#     - key: "node.kubernetes.io/instance-type"
-#       operator: In
-#       values: ["t3.small", "t3.medium"]
-#   limits:
-#     resources:
-#       cpu: "8"
-#       memory: "16Gi"
-#   provider:
-#     instanceProfile: karpenter-node-instance-profile
-#   ttlSecondsAfterEmpty: 15
-#   consolidation:
-#     enabled: true
+apiVersion: karpenter.sh/v1
+kind: Provisioner
+metadata:
+  name: spot
+spec:
+  requirements:
+    - key: "karpenter.sh/capacity-type"
+      operator: In
+      values: ["spot"]
+    - key: "node.kubernetes.io/instance-type"
+      operator: In
+      values: ["t3.small", "t3.medium"]
+  limits:
+    resources:
+      cpu: "8"
+      memory: "16Gi"
+  provider:
+    instanceProfile: karpenter-node-instance-profile
+  ttlSecondsAfterEmpty: 15
+  consolidation:
+    enabled: true
