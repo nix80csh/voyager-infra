@@ -11,7 +11,7 @@ settings:
 replicas: 1
 image:
   repository: public.ecr.aws/karpenter/controller
-  tag: "${.Values.karpenterVersion}"  # Reference centralized version
+  tag: "${.Values.karpenterVersion}"
 serviceAccount:
   create: true
   name: karpenter
