@@ -7,3 +7,7 @@ image:
 settings:
   clusterName: voyager-cluster
   clusterEndpoint: https://1EBBAD31A904C4C42E819438A2477EF3.gr7.ap-northeast-2.eks.amazonaws.com
+serviceAccount:
+  name: karpenter
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::009537862357:role/karpenter-controller-role
