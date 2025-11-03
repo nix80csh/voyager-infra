@@ -12,7 +12,9 @@ spec:
       values: ["t3.large"]
   provider:
     instanceProfile: karpenter-node-instance-profile
+    subnetSelector:
+      karpenter.sh/discovery: "voyager-cluster"    # 또는 서브넷 태그/키=값, 또는 ids: ["subnet-..."]
+    securityGroupSelector:
+      Name: "eks-cluster-sg"                       # 또는 원하는 SG 태그/키=값
   ttlSecondsAfterEmpty: 30
-  consolidation:
-    enabled: true
   weight: 10

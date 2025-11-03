@@ -9,13 +9,16 @@ spec:
       values: ["spot"]
     - key: "node.kubernetes.io/instance-type"
       operator: In
-      values: ["t3.small", "t3.medium"]
+      values: ["t3.small","t3.medium"]
   limits:
     resources:
       cpu: "8"
       memory: "16Gi"
   provider:
     instanceProfile: karpenter-node-instance-profile
-  ttlSecondsAfterEmpty: 15
+    subnetSelector:
+      karpenter.sh/discovery: "voyager-cluster"
+    securityGroupSelector:
+      Name: "eks-cluster-sg"
   consolidation:
     enabled: true
