@@ -1,4 +1,5 @@
 apiVersion: v2
+kind: Chart
 name: voyager-q2
 type: application
 version: 0.1.0
