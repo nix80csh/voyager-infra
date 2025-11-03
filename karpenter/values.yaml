@@ -1,22 +1,39 @@
+replicaCount: 2
 
-clusterName: voyager-cluster
-karpenterVersion: v0.33.0
-karpenterApiVersion: karpenter.sh/v1
-settings:
-  aws:
-    defaultInstanceProfile: karpenter-node-instance-profile
-    clusterEndpoint: https://1EBBAD31A904C4C42E819438A2477EF3.gr7.ap-northeast-2.eks.amazonaws.com
-    roleArn: arn:aws:iam::009537862357:role/karpenter-controller-role
-
-replicas: 1
 image:
-  repository: public.ecr.aws/karpenter/controller
-  tag: "${.Values.karpenterVersion}"
-serviceAccount:
-  create: true
-  name: karpenter
-  annotations:
-    eks.amazonaws.com/role-arn: "${.Values.settings.aws.roleArn}"
-controller:
-  args:
-    - --cluster-name=voyager-cluster
+  repository: nginx
+  tag: 1.23.10
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: 80
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 2
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: 80
+  initialDelaySeconds: 30
+  periodSeconds: 20
+  timeoutSeconds: 2
+
+podAnnotations: {}
+podLabels: {}
+serviceAnnotations: {}
